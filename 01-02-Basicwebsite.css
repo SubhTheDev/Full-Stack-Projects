@@ -3,18 +3,17 @@ html {
   margin: 0;
 }
 body {
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 body::selection {
-  background-color: rgb(124, 255, 185);
+  background-color: rgb(205, 250, 225);
+}
+a {
+  text-decoration: none;
+  color: #14ad8a;
+}
+a:hover {
+  color: #086952;
 }
 
 /*Profile sytle*/
@@ -39,7 +38,7 @@ body::selection {
 
 /*Navigation sytle*/
 #nav-container {
-  position: absolute;
+  position: fixed;
   top: 1rem;
   right: 1.5rem;
   z-index: 1000;
@@ -59,6 +58,7 @@ body::selection {
 #dropdown-nav {
   display: none;
   position: absolute;
+  user-select: none;
   top: 100%;
   right: 0;
   background-color: #ffffff;
@@ -86,5 +86,11 @@ body::selection {
 }
 #dropdown-nav li a:hover {
   background-color: #f1f5f9;
-  color: #2563eb;
+  color: #14ad8a;
 }
+
+h1 {
+  text-shadow: 1px 2px 4px rgb(196, 194, 197);
+}
+
+/*Projects section*/
