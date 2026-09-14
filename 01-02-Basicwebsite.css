@@ -95,9 +95,9 @@ h1 {
 /*Projects section*/
 #main {
   display: flex;
-  gap: 2rem;
 }
-#Projects {
+#main article {
+  flex: 1;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 15px;
   padding: 10px;
