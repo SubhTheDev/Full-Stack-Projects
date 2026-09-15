@@ -1,0 +1,18 @@
+/*Whole page common style*/
+html {
+  margin: 0;
+}
+body {
+  font-family: system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+body::selection {
+  background-color: rgb(184, 253, 215);
+}
+a {
+  text-decoration: none;
+  color: #14ad8a;
+}
+a:hover,
+a::selection {
+  color: #086952;
+}
