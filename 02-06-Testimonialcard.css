@@ -16,3 +16,8 @@ a:hover,
 a::selection {
   color: #086952;
 }
+
+/*Message card sytle*/
+#message-card {
+  display: flex;
+}
