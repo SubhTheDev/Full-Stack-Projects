@@ -1,27 +1,44 @@
-/*A cart contains items with a price and quantity. Build a summary that calculates subtotal, discount, tax, and final total.
+//calculates subtotal
+function calculateSubtotal(items) {
+  return items.reduce((accumulatedTotal, { price, quantity }) => {
+    return accumulatedTotal + price * quantity;
+  }, 0);
+}
 
-Write these functions:
-calculateSubtotal(items) should add price * quantity for every item.
-calculateDiscount(subtotal, discountPercent) should return the discount amount.
-calculateTax(amountAfterDiscount, taxPercent) should return the tax amount after the discount.
-createCartSummary(items, discountPercent, taxPercent) should return an object with subtotal, discount, tax, and total.
+//calculates discount and substracts from subtotal
+function calculateDiscount(subTotal, discountPercent) {
+  const discount = subTotal * (discountPercent / 100);
+  const amountAfterDiscount = subTotal - discount;
+  return { discount, amountAfterDiscount };
+}
 
-Sample checks:
-js
+//calculates tax and adds to the amountAfterDiscount
+function calculateTax(amountAfterDiscount, taxPercent) {
+  const tax = amountAfterDiscount * (taxPercent / 100);
+  const finalAmount = amountAfterDiscount - tax;
+  return { tax, finalAmount };
+}
+
+//displays the final result
+function createCartSummary(items, discountPercent, taxPercent) {
+  const subTotal = calculateSubtotal(items);
+  const { discount, amountAfterDiscount } = calculateDiscount(
+    subTotal,
+    discountPercent,
+  );
+  const { tax, finalAmount } = calculateTax(amountAfterDiscount, taxPercent);
+  return `subtotal: $${subTotal}, discount: $${discount}, tax: $${tax}, total: $${finalAmount}`;
+}
+
+//object
 const cartItems = [
-  { name: 'Notebook', price: 10, quantity: 2 },
-  { name: 'Pen', price: 2, quantity: 5 },
-  { name: 'Bag', price: 30, quantity: 1 },
+  { name: "Notebook", price: 10, quantity: 2 },
+  { name: "Pen", price: 2, quantity: 5 },
+  { name: "Bag", price: 30, quantity: 1 },
 ];
+const singleItemCart = [{ name: "Mouse", price: 25, quantity: 2 }];
+
+//output
 console.log(createCartSummary(cartItems, 10, 5));
 console.log(calculateSubtotal(cartItems));
-const singleItemCart = [{ name: 'Mouse', price: 25, quantity: 2 }];
 console.log(createCartSummary(singleItemCart, 0, 10));
-Expected output:
-
-txt
-{ subtotal: 60, discount: 6, tax: 2.7, total: 56.7 }
-60
-{ subtotal: 50, discount: 0, tax: 5, total: 55 }
-
-The subtotal must include every item and multiply each item's price by its quantity. */
