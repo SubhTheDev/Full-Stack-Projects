@@ -1,26 +1,4 @@
-/*Turn a numeric score into a grade report. The report should include the letter grade, whether the student passed, and a short feedback message.
-
-Write these functions:
-getLetterGrade(score) should return "A", "B", "C", "D", or "F" based on the score.
-hasPassed(score) should return true when the score is 60 or higher.
-getFeedback(grade) should return a short message for the grade.
-createGradeReport(name, score) should return one object with name, score, grade, passed, and feedback.
-
-Sample checks:
-js
-console.log(createGradeReport('Ava', 92));
-console.log(createGradeReport('Noah', 48));
-console.log(createGradeReport('Mina', 75));
-console.log(createGradeReport('Sam', 60));
-Expected output:
-
-txt
-{ name: "Ava", score: 92, grade: "A", passed: true, feedback: "Excellent work" }
-{ name: "Noah", score: 48, grade: "F", passed: false, feedback: "Keep practicing" }
-{ name: "Mina", score: 75, grade: "C", passed: true, feedback: "You passed" }
-{ name: "Sam", score: 60, grade: "D", passed: true, feedback: "You passed" }
-
-Use the grade from getLetterGrade when choosing the feedback. */
+// returns a grade letter based on score
 function getLetterGrade(score) {
   if (score < 40) {
     return "F";
@@ -35,6 +13,7 @@ function getLetterGrade(score) {
   }
 }
 
+//returns pass/fail
 function hasPassed(score) {
   if (score >= 60) {
     return "true";
@@ -43,6 +22,7 @@ function hasPassed(score) {
   }
 }
 
+//returns a feedback based on score
 function getFeedback(score) {
   if (score < 40) {
     return "Study harder!";
@@ -57,6 +37,7 @@ function getFeedback(score) {
   }
 }
 
+//creates the grade-report
 function createGradeReport(name, score) {
   const letter = getLetterGrade(score);
   const isPassed = hasPassed(score);
@@ -64,6 +45,7 @@ function createGradeReport(name, score) {
   return `name: ${name}, score: ${score}, grade: ${letter}, passed: ${isPassed}, feedback: ${feedback}`;
 }
 
+//output
 console.log(createGradeReport("Ava", 92));
 console.log(createGradeReport("Noah", 48));
 console.log(createGradeReport("Mina", 75));
