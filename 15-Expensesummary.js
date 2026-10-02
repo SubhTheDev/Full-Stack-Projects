@@ -1,29 +1,35 @@
-/*Given a list of expenses, calculate useful totals and identify the largest expense. The final summary should reuse the smaller helper functions.
+//calulates totalExpense
+function calculateTotal(expenses) {
+  return expenses.reduce((total, expense) => total + expense.amount, 0);
+}
 
-Write these functions:
-calculateTotal(expenses) should return the total amount spent.
-calculateCategoryTotal(expenses, category) should return the total for one category.
-findLargestExpense(expenses) should return the full expense object with the largest amount.
-createExpenseSummary(expenses) should return total, foodTotal, transportTotal, and largestExpense.
+//calculate totalExpense by category
+function calculateCategoryTotal(expenses, category) {
+  return expenses
+    .filter((expense) => expense.category === category)
+    .reduce((expensesTotal, expense) => expensesTotal + expense.amount, 0);
+}
 
-Sample checks:
-js
+//returns the largestExpense
+function findLargestExpense(expenses) {
+  return expenses.reduce((max, expense) => Math.max(max, expense.amount), 0);
+}
+
+//creates the expenseSummary
+function createExpenseSummary(expenses) {
+  return `total: $${calculateTotal(expenses)}, foodTotal: $${calculateCategoryTotal(expenses, "food")}, transportTotal: $${calculateCategoryTotal(expenses, "transport")}, largestExpense: ${findLargestExpense(expenses)}`;
+}
+
+//input
 const expenses = [
-  { id: 1, category: 'food', amount: 24 },
-  { id: 2, category: 'transport', amount: 15 },
-  { id: 3, category: 'food', amount: 18 },
-  { id: 4, category: 'books', amount: 40 },
+  { id: 1, category: "food", amount: 24 },
+  { id: 2, category: "transport", amount: 15 },
+  { id: 3, category: "food", amount: 18 },
+  { id: 4, category: "books", amount: 40 },
 ];
+
+//output
 console.log(createExpenseSummary(expenses));
-console.log(calculateCategoryTotal(expenses, 'food'));
-console.log(calculateCategoryTotal(expenses, 'health'));
+console.log(calculateCategoryTotal(expenses, "food"));
+console.log(calculateCategoryTotal(expenses, "health"));
 console.log(findLargestExpense(expenses));
-Expected output:
-
-txt
-{ total: 97, foodTotal: 42, transportTotal: 15, largestExpense: { id: 4, category: "books", amount: 40 } }
-42
-0
-{ id: 4, category: "books", amount: 40 }
-
-findLargestExpense should return the whole expense object, not only the amount. */
