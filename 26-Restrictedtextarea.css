@@ -1,6 +1,12 @@
-#message-container {
-}
-
 #message-box {
   border-radius: 5px;
+  width: 400px;
+  height: 150px;
+  resize: none;
+  box-sizing: border-box;
+  border: 2px solid rgb(145, 145, 145);
+}
+#message-box:focus {
+  outline: none;
+  border-color: rgb(88, 90, 90);
 }
